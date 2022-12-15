@@ -58,9 +58,9 @@ const id_orden = allreservation[0].orderId
       installments: 3  //Cantidad máximo de cuotas
     },
     back_urls: {
-      success: `http://localhost:3001/mercadopay/${user}/pagos`,
-      failure: 'http://localhost:3000/carrito',
-      pending: 'http://localhost:3001/mercadopago/pagos',
+      success: `https://wetravelback-production-5e23.up.railway.app/mercadopay/${user}/pagos`,
+      failure: 'https://wetravel-app.vercel.app/carrito',
+      pending: 'https://wetravelback-production-5e23.up.railway.app/mercadopago/pagos',
     },
   };
 
@@ -101,16 +101,16 @@ Order.findByPk(external_reference)
   .then(() => {
     console.info('redirect success', order)
 
-    return res.redirect(`http://localhost:3000/confirmacion/${external_reference}`)
+    return res.redirect(`https://wetravel-app.vercel.app/confirmacion/${external_reference}`)
   })
   .catch((err) =>{
     console.error('error al salvar', err)
-    return res.redirect(`http://localhost:3000/?error=${err}&where=al+salvar`)
+    return res.redirect(`https://wetravel-app.vercel.app/?error=${err}&where=al+salvar`)
   })
 })
 .catch(err =>{
   console.error('error al buscar', err)
-  return res.redirect(`http://localhost:3000/?error=${err}&where=al+buscar`)
+  return res.redirect(`https://wetravel-app.vercel.app/?error=${err}&where=al+buscar`)
 })
 
 //proceso los datos del pago 
